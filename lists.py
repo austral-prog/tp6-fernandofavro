@@ -1,11 +1,5 @@
 def remove_elements(list_to_remove_elements):
     """Remove the 0th, 4th and 5th elements from the list."""
-    # Si la lista tiene menos de 1 elemento, simplemente devolvemos la misma
-    if len(list_to_remove_elements) == 0:
-        return []
-
-def remove_elements(list_to_remove_elements):
-    """Remove the 0th, 4th and 5th elements from the list."""
     if len(list_to_remove_elements) == 0:
         return []
     # Creamos una nueva lista excluyendo las posiciones 0, 4 y 5
@@ -33,16 +27,20 @@ def check_lists(list_to_compare1, list_to_compare2):
 
 
 def list_of_lists(list_of_lists_to_modify):
-    """Modify each inner list based on its length."""
+    """Modify each inner list based on its length following specific rules."""
     new_list = []
     for sublist in list_of_lists_to_modify:
         n = len(sublist)
-        if n <= 2:
-            new_list.append(sublist[:])           # no se toca
+        if n == 0:
+            new_list.append([])
+        elif n == 1:
+            new_list.append([])             # elimina el único elemento
+        elif n == 2:
+            new_list.append(sublist[:])     # deja igual
         elif n == 3:
-            new_list.append(sublist[:-1])         # quita el último
+            new_list.append(sublist[:-1])   # quita el último
         elif 4 <= n <= 5:
-            new_list.append(sublist[1:-1])        # quita el primero y el último
+            new_list.append(sublist[1:-1])  # quita el primero y el último
         else:
-            new_list.append(sublist[2:])          # quita los dos primeros
+            new_list.append(sublist[2:])    # quita los dos primeros
     return new_list
