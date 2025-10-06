@@ -31,17 +31,15 @@ def check_lists(list_to_compare1, list_to_compare2):
 
 
 def list_of_lists(list_of_lists_to_modify):
-    """Modify each inner list based on its length."""
-    new_outer_list = []
-    for inner in list_of_lists_to_modify:
-        n = len(inner)
-        if n >= 5:
-            # Tomar los elementos del índice 1 al n-2 (quitamos el primero y el último)
-            new_outer_list.append(inner[1:-1])
-        elif n >= 3:
-            # Si tiene entre 3 y 4 elementos, quitamos el primero
-            new_outer_list.append(inner[1:])
+    new_list = []
+    for sublist in list_of_lists_to_modify:
+        n = len(sublist)
+        if n <= 2:
+            new_list.append(sublist[:])
+        elif n == 3:
+            new_list.append(sublist[:-1])      # quita el último
+        elif 4 <= n <= 5:
+            new_list.append(sublist[1:-1])     # quita el primero y el último
         else:
-            # Si tiene menos de 3, dejamos igual
-            new_outer_list.append(inner[:])
-    return new_outer_list
+            new_list.append(sublist[2:])       # quita los dos primeros
+    return new_list
